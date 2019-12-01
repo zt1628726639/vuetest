@@ -1,32 +1,55 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="container">
+    <!-- 顶部 header 区域 -->
+
+    <mt-header fixed title="我的项目"></mt-header>
+
+    <!-- 中间的 router-view 区域 -->
+  <transition>
+    <router-view></router-view>
+  </transition>
+      
+
+    <!-- 底部 tapbar 区域 -->
+
+    <nav class="mui-bar mui-bar-tab">
+        <router-link to="/home" class="mui-tab-item" >
+          <span class="mui-icon mui-icon-home"></span>
+          <span class="mui-tab-label">首页</span>
+        </router-link>
+        <router-link to="/member" class="mui-tab-item" >
+          <span class="mui-icon mui-icon-contact"></span>
+          <span class="mui-tab-label">会员</span>
+        </router-link>
+        <router-link to="/cart" class="mui-tab-item" >
+          <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+          <span class="mui-tab-label">购物车</span>
+        </router-link>
+        <router-link to="/search" class="mui-tab-item" >
+          <span class="mui-icon mui-icon-search"></span>
+          <span class="mui-tab-label">搜索</span>
+        </router-link>
+      </nav>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped>
+    #container {
+        padding-top: 40px;
+        overflow-x: hidden;
+        
+    }
+    .v-enter
+    {
+      opacity: 0;
+      transform: translateX(100%)
+    }
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(-100%);position: absolute
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.5s ease;
+    }
 </style>
