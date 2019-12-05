@@ -2,7 +2,9 @@
   <div id="container">
     <!-- 顶部 header 区域 -->
 
-    <mt-header fixed title="我的项目"></mt-header>
+    <mt-header fixed title="我的项目">
+      <mt-button icon="back" slot="left" @click="back()" v-show="flag"></mt-button>
+    </mt-header>
 
     <!-- 中间的 router-view 区域 -->
   <transition>
@@ -33,11 +35,43 @@
   </div>
 </template>
 
+
+<script>
+export default {
+  data(){
+    return {
+      flag : false
+    }
+  },
+  methods:{
+    back(){
+      this.$router.go(-1)
+    }
+  },
+  watch: {
+      '$route.path': function (newVal, oldVal) {
+         if (newVal === '/home') {
+          this.flag = !this.flag
+          }else if(oldVal === '/home') {
+          this.flag = !this.flag
+          }else{
+             this.flag = true
+          }
+   
+        }
+      }
+}
+</script>
+
 <style scoped>
     #container {
         padding-top: 40px;
+        padding-bottom: 50px;
         overflow-x: hidden;
         
+    }
+    .mint-header.is-fixed{
+      z-index: 999
     }
     .v-enter
     {
