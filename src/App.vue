@@ -24,7 +24,7 @@
           <span class="mui-tab-label">会员</span>
         </router-link>
         <router-link to="/cart" class="mui-tab-item" >
-          <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+          <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span id="badge" class="mui-badge">0</span></span>
           <span class="mui-tab-label">购物车</span>
         </router-link>
         <router-link to="/search" class="mui-tab-item" >
@@ -48,10 +48,17 @@ export default {
       this.$router.go(-1)
     }
   },
+  created(){
+    if(this.$route.path === '/home'){
+      this.flag = false
+    }else{
+      this.flag = true
+    }
+  },
   watch: {
       '$route.path': function (newVal, oldVal) {
          if (newVal === '/home') {
-          this.flag = !this.flag
+          this.flag = false
           }else if(oldVal === '/home') {
           this.flag = !this.flag
           }else{
@@ -70,20 +77,25 @@ export default {
         overflow-x: hidden;
         
     }
+    .mui-bar .mui-bar-tab{
+      width: 100%
+    }
     .mint-header.is-fixed{
-      z-index: 999
+      z-index: 3;
     }
     .v-enter
     {
       opacity: 0;
-      transform: translateX(100%)
+      transform: translateX(100%);
+      width: 100%;
     }
     .v-leave-to{
       opacity: 0;
-      transform: translateX(-100%);position: absolute
+      transform: translateX(-100%);
+      position: absolute;
     }
     .v-enter-active,
     .v-leave-active{
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
     }
 </style>

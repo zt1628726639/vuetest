@@ -78,6 +78,7 @@ export default {
 
 <style lang="scss">
 .cmt-container {
+  padding: 1vh;
   h3 {
     font-size: 18px;
   }

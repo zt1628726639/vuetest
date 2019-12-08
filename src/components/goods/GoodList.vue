@@ -89,33 +89,44 @@ export default {
     flex-wrap: wrap;
     padding: 1vw;
     .goods{
-      height: 40vh;
+      height: 50vh;
       box-shadow: 0 0 8px rgb(221, 218, 218);
       width: 49%;
       padding: 1vw;
       position: relative;
-      img{width: 100%}
+      img{
+        height: 68%;
+        width: 100%;
+      }
       .goods-name{
-        font-size: 16px;
+        line-height: 3vh;
+        font-size: 3vw;
       }
       .info{
+        height: 15%;
         width: 95%;
         position: absolute;
-        bottom: 1vw;
         background-color: #eee;
         padding: 1vw;
+        bottom: 1vh;
        .price{
+         margin: 0;
+         
         .new{color: red;
         font-style: oblique;
         margin-right: 2vw;
-        font-size: 16px}
-        .old{font-size: 13px;
+        font-size: 3vw}
+        .old{font-size: 2.5vw;
         text-decoration: line-through}
       } 
       .sell{
+        font-size: 2vh;
        display: flex;
-       justify-content: space-between
-       
+       margin: 0;
+       justify-content: space-between;
+       span{
+         padding: 1vw
+       }
      }
     }
     }

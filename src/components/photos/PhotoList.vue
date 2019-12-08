@@ -75,6 +75,7 @@ export default {
 .photo-list{
 	padding: 1vw;
 	li{
+		list-style: none;
 		position: relative;
 		background-color: #ccc;
 		text-align: center;

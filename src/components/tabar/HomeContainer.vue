@@ -1,12 +1,7 @@
 <template>
         <div>
-            <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in lblist" :key="item.id">
-              <img :src="item.img" alt="">
-            </mt-swipe-item>
-            </mt-swipe>
             
-
+            <swiper :baseUrl="Url"  :Full="true"></swiper>
 
             <ul class="mui-table-view mui-grid-view mui-grid-9">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
@@ -36,25 +31,19 @@
     import {
         Toast
     } from 'mint-ui'
-    export default {
+    import swiper from '@/components/subcomponent/Swiper.vue'
+    export default{
         data() {
             return {
-                lblist: []
+                lblist: [],
+                Url:'getlunbo'
             }
-        },
-        created() {
-            this.getLunbo()
         },
         methods: {
-            getLunbo() {
-                this.$axios.get('getLunbo').then((response) => {
-                    if (response.data.status === 0) {
-                        this.lblist = response.data.message
-                    } else {
-                        Toast("图片加载失败")
-                    }
-                })
-            }
+        
+        },
+        components:{
+            swiper
         }
     }
 </script>
@@ -68,18 +57,7 @@
         width: 100%;
         height: 100%;
     }
-    
-    .mint-swipe-item:nth-child(1) {
-        background-color: aqua;
-    }
-    
-    .mint-swipe-item:nth-child(2) {
-        background-color: lightgrey;
-    }
-    
-    .mint-swipe-item:nth-child(3) {
-        background-color: limegreen;
-    }
+
     
     .mui-grid-view.mui-grid-9 {
         background-color: white;
